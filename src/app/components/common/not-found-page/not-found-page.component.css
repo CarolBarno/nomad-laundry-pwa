@@ -1,0 +1,32 @@
+.container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  padding-top: 150px;
+}
+
+.back-btn button {
+  padding: 0.5em;
+  margin: 0.5em;
+  color: white !important;
+  width: 100%;
+}
+
+.back-btn button:hover {
+  transition: 300ms;
+  background-color: #f05a62;
+}
+
+.navi-btn button {
+  padding: 0.5em;
+  margin: 00.5em;
+  color: white;
+  width: 100%;
+}
+
+.navi-btn button:hover {
+  background-color: #f05a62;
+  transition: 300ms;
+}
