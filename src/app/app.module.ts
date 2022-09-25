@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
