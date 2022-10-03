@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivate: []
   },
   {
-    path: '***',
+    path: '**',
     component: NotFoundPageComponent
   }
 ];

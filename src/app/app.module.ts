@@ -8,12 +8,16 @@ import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/common/navbar/navbar.component';
+import { FooterComponent } from './components/common/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

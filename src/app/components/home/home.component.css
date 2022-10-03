@@ -1,0 +1,26 @@
+p.home-text {
+  margin-top: 96px;
+  color: #02082b;
+  font-size: 48px;
+  line-height: normal;
+}
+
+p.tag-text {
+  font-size: medium;
+}
+
+.container {
+  margin-left: 200px;
+}
+
+.navi-btn button {
+  padding: 0.5em;
+  margin: 00.5em;
+  color: white;
+  width: 15%;
+  background-color: #02082b;
+}
+
+.home-brand {
+  margin-right: 40px;
+}
