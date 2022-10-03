@@ -11,22 +11,24 @@
   padding: 0.5em;
   margin: 0.5em;
   color: white !important;
-  width: 100%;
+  width: 15%;
+  background-color: #5cb8a8;
 }
 
 .back-btn button:hover {
   transition: 300ms;
-  background-color: #f05a62;
+  background-color: #c77fc1;
 }
 
 .navi-btn button {
   padding: 0.5em;
   margin: 00.5em;
   color: white;
-  width: 100%;
+  width: 15%;
+  background-color: #02082b;
 }
 
 .navi-btn button:hover {
-  background-color: #f05a62;
+  background-color: #c77fc1;
   transition: 300ms;
 }

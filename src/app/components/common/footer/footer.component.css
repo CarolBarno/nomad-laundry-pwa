@@ -1,0 +1,49 @@
+a.link {
+  padding: 5px;
+  font-weight: 500;
+  color: white !important;
+  margin: 0.1px;
+}
+
+.social-buttons {
+  text-align: end;
+}
+
+.android a {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(239, 250, 250);
+}
+
+.social-buttons a i {
+  font-size: 20px;
+}
+
+.social-buttons a small {
+  line-height: 0%;
+  margin: 0.4em;
+  color: white;
+}
+
+.social-buttons a {
+  text-decoration: none;
+}
+
+.bg-custom {
+  background-color: #02082b !important;
+}
+
+footer small {
+  color: white;
+}
+
+footer {
+  text-align: center;
+}
+
+@media screen and (max-width: 471px) {
+  .links a {
+    text-decoration: underline;
+    padding: 1px;
+  }
+}

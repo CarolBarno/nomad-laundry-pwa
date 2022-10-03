@@ -1,0 +1,49 @@
+[login],
+[get-started] {
+  cursor: pointer;
+}
+
+[img] {
+  height: 40px;
+  width: auto;
+}
+
+.custom-active {
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.navbar-brand img {
+  margin-right: 240px;
+  margin-left: 40px;
+}
+
+.account-login button {
+  margin-left: 1em;
+}
+
+.register {
+  background-color: #5cb8a8 !important;
+  color: white;
+  margin-right: 2em;
+}
+
+.bg-custom {
+  background-color: #02082b !important;
+}
+
+@media screen and (max-width: 328px) {
+  .navbar-brand img {
+    width: 80px;
+  }
+
+  .account-login button {
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .account-login button {
+    margin: 0.1em 0 0 0;
+  }
+}

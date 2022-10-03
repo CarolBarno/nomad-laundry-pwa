@@ -1,0 +1,45 @@
+<nav class="mb-1 navbar navbar-expand-lg sticky-top  navbar-dark bg-custom">
+
+  <a class="navbar-brand" href="/">
+    <img img src="../../../../assets/image/nl_logo.png" alt="">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav me-auto nav-flex-icons justify-content-between">
+      <li class="nav-item px-4">
+        <a class="nav-link" routerLink='/' routerLinkActive='custom-active'>HOW IT WORKS
+        </a>
+      </li>
+      <li class="nav-item px-4">
+        <a class="nav-link" routerLink='/' routerLinkActive='custom-active'>PRICES & SERVICES
+        </a>
+      </li>
+      <li class="nav-item px-4">
+        <a class="nav-link" routerLink='/' routerLinkActive='custom-active'>ABOUT US
+        </a>
+      </li>
+      <li class="nav-item px-4">
+        <a class="nav-link" routerLink='/' routerLinkActive='custom-active'>FAQ
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav nav-flex-icons account-login">
+      <li class="nav-item">
+        <button class="btn btn-outline-light btn-sm" [routerLink]="['/accounts/login']" login>
+          SIGN IN
+        </button>
+      </li>
+      <li class="nav-item">
+        <button routerLink='/accounts/register' get-started class="btn btn-sm register">
+          BOOK NOW
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
