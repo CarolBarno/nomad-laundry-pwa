@@ -1,0 +1,124 @@
+.login {
+  margin: auto;
+  width: 50%;
+}
+
+.loginForm {
+  margin-top: 2.5em;
+}
+
+form {
+  margin: 10px;
+}
+
+[login] {
+  width: 100%;
+  background-color: #02082b;
+  color: white;
+}
+
+[login]:hover {
+  background-color: #c77fc1;
+  transition: 300ms;
+}
+
+#forget-password {
+  text-align: center;
+  margin: 0.1em;
+}
+
+#forget-password a {
+  color: #c77fc1;
+}
+
+.register {
+  text-align: center;
+  margin: 2.5em 0 2.5em 0;
+  color: #02082b !important;
+}
+
+.register a {
+  text-decoration: underline;
+  color: #c77fc1;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+@media screen and (max-width: 769px) {
+  #pc {
+    display: none;
+  }
+
+  .login {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+#pc {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  max-height: auto;
+}
+
+.e-logo {
+  text-align: center;
+}
+
+.signin-form {
+  margin-top: 2.5em;
+}
+
+.sign-in-header {
+  text-align: center;
+  margin: 2.5em 0 2.5em 0;
+}
+
+.input-control input {
+  background-color: #f4f3f9 !important;
+  color: #02082b;
+}
+
+.input-control {
+  border-color: #e9e9f0 !important;
+}
+
+::placeholder {
+  color: #02082b;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #02082b;
+}
+
+::-ms-input-placeholder {
+  color: #02082b;
+}
+
+.welcome > * {
+  color: #02082b !important;
+}
+
+.v-pass {
+  cursor: pointer;
+}
+
+.home mat-icon {
+  vertical-align: middle;
+}
+
+.home {
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.home a {
+  text-decoration: underline;
+  color: #c77fc1;
+}
