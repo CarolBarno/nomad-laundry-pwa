@@ -10,17 +10,23 @@ p.tag-text {
 }
 
 .container {
-  margin-left: 200px;
-}
-
-.navi-btn button {
-  padding: 0.5em;
-  margin: 00.5em;
-  color: white;
-  width: 15%;
-  background-color: #02082b;
+  padding: 1.5em;
 }
 
 .home-brand {
   margin-right: 40px;
+}
+
+.learn-more {
+  margin: 0 0 1em 0;
+}
+
+.learn-more button {
+  background-color: #02082b !important;
+  color: white !important;
+}
+
+.learn-more button:hover {
+  background-color: #c77fc1 !important;
+  transition: 300ms;
 }

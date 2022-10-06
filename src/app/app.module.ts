@@ -8,16 +8,18 @@ import { environment } from '../environments/environment';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { FooterComponent } from './components/common/footer/footer.component';
+import { UserSharedModule } from './shared-modules/user-shared.module';
+import { LoginComponent } from './components/common/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundPageComponent,
-    NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,10 @@ import { FooterComponent } from './components/common/footer/footer.component';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UserSharedModule,
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

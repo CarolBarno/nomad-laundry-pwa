@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="loginForm">
+        <div class="login">
+          <div class="e-logo">
+            <a routerLink='/'>
+              <img src="../../../../assets/image/home_image.png" alt="Nomad Laundry">
+            </a>
+          </div>
+
+          <div class="signin-form">
+            <div class="sign-in-header">
+              <div class="welcome">
+                <h1>Welcome!</h1>
+                <p>Sign in by entering the information below</p>
+              </div>
+            </div>
+            <form class="form-group login-form" #signInForm='ngForm' (ngSubmit)='loginUser(signInForm)' novalidate>
+              <mat-progress-bar *ngIf='loginSuccess' mode="indeterminate"></mat-progress-bar>
+              <div *ngIf='messages'>
+                <p id='err' class="alert alert-danger"> <small> {{messages }}
+                    <a *ngIf='logoutDevices' href='/account/sign-out-devices'> Sign out from other
+                      devices.</a>
+                  </small></p>
+              </div>
+              <div class="form-group input-control">
+                <input #email='ngModel' class="form-control" [email]='"true"' [ngModelOptions]='{updateOn:"blur"}'
+                  [(ngModel)]='loginData.email' name="email" id="email" placeholder="example: yourname@mail.com"
+                  type="email" autocomplete="email" appEmailRegistered>
+                <mat-error *ngIf='email.errors?.email'><small>Wrong email formart</small></mat-error>
+                <mat-error *ngIf='email.errors?.emailRegistered'><small>Email does not exist, please
+                    register.</small>
+                </mat-error>
+              </div>
+              <div class="input-group input-control">
+                <input #password class="form-control" [(ngModel)]='loginData.password' name="password" id="password"
+                  placeholder="password" [type]="hide ? 'password' : 'text'" data-toggle="password"
+                  autocomplete="new-password">
+
+                <div class="input-group-append">
+                  <span class="input-group-text v-pass">
+                    <mat-icon (click)='hide = !hide'>{{hide ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                  </span>
+                </div>
+
+              </div>
+              <section id="forget-password">
+                <a [routerLink]="['/accounts/reset-password']"><small>Forgot Password?</small> </a>
+              </section>
+
+
+              <button mat-stroked-button login type="submit" [disabled]='!signInForm.valid' class="btn-sm"> Continue
+              </button>
+            </form>
+          </div>
+
+          <div class="register">
+            <p> <small>Don't have an account? <a [routerLink]="['/accounts/register']">Register</a> </small>
+            </p>
+          </div>
+
+          <div class="home">
+            <p>
+              <a routerLink='/'>
+                <mat-icon>arrow_back</mat-icon>Back to home page.
+              </a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-6" id="pc" [ngStyle]="{'background-image': 'url(' + banner + ')'}">
+    </div>
+  </div>
+</div>
