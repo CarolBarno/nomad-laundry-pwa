@@ -23,6 +23,14 @@ export class AuthService {
 
   }
 
+  public getCurrentUser(): Promise<any> {
+    return this.feathers.getCurrentUser();
+  }
+
+  public logIn(credentials?: any): Promise<any> {
+    return this.feathers.authenticate(credentials);
+  }
+
   public async logOut() {
     let l = await this.feathers.logout();
     if (!l) { return; }
@@ -39,6 +47,11 @@ export class AuthService {
         localStorage.removeItem('nomadLaundryAuth');
       }
     });
+  }
+
+  // gets stored auth key
+  getStoredAuth() {
+    return localStorage.getItem('nomadLaundryAuth');
   }
 
   // login authenitcations

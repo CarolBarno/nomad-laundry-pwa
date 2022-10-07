@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="row contents">
+      <div class="col-md-4">
+        <h6 class="default-color">Current Time: {{currentTime | date:"medium"}}</h6>
+      </div>
+
+      <div class="col-md-4">
+        <p class="default-color">Logged in as <strong>{{currentUser.email}}</strong></p>
+      </div>
+
+      <div class="col-md-4">
+        <div class="menu">
+          <nb-select shape="round" size="small" placeholder="Quick Links" class="header-font">
+          </nb-select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,53 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+nb-icon {
+  font-size: 1.75rem;
+}
+
+.sidebar-toggle {
+  text-decoration: none;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+#actions {
+  float: left;
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (max-width: 361px) {
+  #actions {
+    /* display: none; */
+    position: relative;
+  }
+  .logo {
+    display: none;
+  }
+}
+
+.logo {
+  padding: 0 1.25rem;
+  font-size: 1.75rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+nb-action {
+  height: auto;
+  display: flex;
+  align-content: center;
+}
+
+nb-user {
+  cursor: pointer;
+}
