@@ -9,9 +9,12 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/common/footer/footer.component';
-import { UserSharedModule } from './shared-modules/user-shared.module';
+import { MainSharedModule } from './shared-modules/main-shared.module';
 import { LoginComponent } from './components/common/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NbThemeModule } from '@nebular/theme';
+import { AuthService } from './service/auth.service';
+import { FeathersService } from './service/feathers.service';
 
 @NgModule({
   declarations: [
@@ -31,11 +34,14 @@ import { FormsModule } from '@angular/forms';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     BrowserAnimationsModule,
-    UserSharedModule,
+    MainSharedModule,
     FormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    NbThemeModule.forRoot({ name: 'default' })
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    FeathersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

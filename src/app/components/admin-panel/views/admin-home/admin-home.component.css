@@ -1,0 +1,18 @@
+.default-color {
+  color: #02082b;
+}
+
+.header-font {
+  color: #02082b !important;
+  font-size: medium;
+  text-align: center;
+}
+
+.contents {
+  margin: 0.2em;
+}
+
+.card-content {
+  padding: 0.5em;
+  text-align: center;
+}

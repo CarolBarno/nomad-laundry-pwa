@@ -7,6 +7,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { EmailLoginCheckDirective } from "../service/async-validator.service";
 import { MatInputModule } from '@angular/material/input';
 import { UserDisplayPipe } from "../pipes/user-display.pipe";
+import { NbMenuModule, NbSidebarModule, NbLayoutModule, NbIconModule, NbUserModule, NbActionsModule, NbContextMenuModule, NbSelectModule } from "@nebular/theme";
+import { NbEvaIconsModule } from "@nebular/eva-icons";
 
 @NgModule({
     declarations: [
@@ -19,7 +21,16 @@ import { UserDisplayPipe } from "../pipes/user-display.pipe";
         RouterModule,
         MatIconModule,
         MatProgressBarModule,
-        MatInputModule
+        MatInputModule,
+        NbSidebarModule.forRoot(),
+        NbMenuModule.forRoot(),
+        NbIconModule,
+        NbLayoutModule,
+        NbActionsModule,
+        NbUserModule,
+        NbContextMenuModule,
+        NbEvaIconsModule,
+        NbSelectModule
     ],
     exports: [
         NavbarComponent,
@@ -28,7 +39,16 @@ import { UserDisplayPipe } from "../pipes/user-display.pipe";
         MatProgressBarModule,
         EmailLoginCheckDirective,
         MatInputModule,
-        UserDisplayPipe
+        UserDisplayPipe,
+        NbIconModule,
+        NbLayoutModule,
+        NbMenuModule,
+        NbSidebarModule,
+        NbActionsModule,
+        NbUserModule,
+        NbContextMenuModule,
+        NbEvaIconsModule,
+        NbSelectModule
     ],
 })
-export class UserSharedModule { }
+export class MainSharedModule { }
