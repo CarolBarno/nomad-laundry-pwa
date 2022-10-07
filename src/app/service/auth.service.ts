@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CurrentUser } from '../interface/user-interface';
 import { FeathersService } from './feathers.service';
 
@@ -26,16 +27,9 @@ export class AuthService {
     let l = await this.feathers.logout();
     if (!l) { return; }
     const currentUser = localStorage.getItem('nomadLaundryCurrentUser');
-    const client = currentUser ? JSON.parse(currentUser) : null;
-    if (!client) { return; }
+    if (!currentUser) { return; }
     this.clearLocalStorage();
-    if (client.client) {
-      const path = this.router.routerState.snapshot.url;
-      this.router.navigate(['accounts/login'], { queryParams: { redirectTo: path } });
-
-    } else {
-      this.router.navigate(['accounts/login']);
-    }
+    this.router.navigate(['accounts/login']);
   }
 
   clearLocalStorage() {
@@ -58,5 +52,27 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  public login(credentials?: any) {
+    return this.feathers.authenticate(credentials);
+  }
+
+  localStorageChanges(currentUser: any) {
+    function changeState() {
+      window.addEventListener('storage', (event) => {
+        event.preventDefault();
+        if (event.key === 'nomadLaundryCurrentUser') {
+          if (event.oldValue !== event.newValue) {
+            if (currentUser) {
+              const { email, first_name, last_name } = currentUser;
+              const user = { email, last_name, first_name };
+              localStorage.setItem('nomadLaundryCurrentUser', JSON.stringify(user));
+            }
+          }
+        }
+      });
+    }
+    changeState();
   }
 }

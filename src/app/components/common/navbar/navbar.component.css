@@ -3,6 +3,31 @@
   cursor: pointer;
 }
 
+[logout] {
+  cursor: pointer;
+}
+
+[logout]:hover {
+  background-color: #02082b;
+  color: white;
+}
+
+[user] {
+  font-weight: 100;
+  border: #02082b solid 1px;
+  border-radius: 99px;
+  padding: 8px;
+  background-color: #02082b;
+  color: white !important;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.actives {
+  background-color: #5cb8a8;
+  color: white;
+}
+
 [img] {
   height: 40px;
   width: auto;
@@ -26,6 +51,11 @@
   background-color: #5cb8a8 !important;
   color: white;
   margin-right: 2em;
+}
+
+.register:hover {
+  background-color: white !important;
+  color: #5cb8a8;
 }
 
 .bg-custom {

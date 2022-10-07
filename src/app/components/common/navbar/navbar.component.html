@@ -29,17 +29,43 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav nav-flex-icons account-login">
+    <ul *ngIf="currentUser?.email;else notLoggedIn" class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
-        <button class="btn btn-outline-light btn-sm" [routerLink]="['/accounts/login']" login>
-          SIGN IN
-        </button>
+        <a routerLink="/profile/{{currentUser?.first_name}}-{{currentUser?.last_name}}"
+          class="nav-link waves-effect waves-light">
+          <small> My Account</small>
+        </a>
       </li>
-      <li class="nav-item">
-        <button routerLink='/accounts/register' get-started class="btn btn-sm register">
-          BOOK NOW
-        </button>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i user>
+            {{currentUser?.first_name | userDisplay | uppercase}}{{currentUser?.last_name | userDisplay | uppercase}}
+          </i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" routerLinkActive="actives"
+            routerLink="/profile/{{currentUser?.first_name}}-{{currentUser?.last_name}}">My Account <br>
+            <small>{{currentUser.email}}</small>
+          </a>
+          <a logout class="dropdown-item" (click)='logout()'>Sign Out</a>
+        </div>
       </li>
     </ul>
+
+    <ng-template #notLoggedIn>
+      <ul class="navbar-nav ml-auto nav-flex-icons account-login">
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-sm" [routerLink]="['/accounts/login']" login>
+            SIGN IN
+          </button>
+        </li>
+        <li class="nav-item">
+          <button routerLink='/accounts/register' get-started class="btn btn-sm register">
+            BOOK NOW
+          </button>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 </nav>
