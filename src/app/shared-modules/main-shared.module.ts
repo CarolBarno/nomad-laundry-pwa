@@ -4,17 +4,23 @@ import { RouterModule } from "@angular/router";
 import { NavbarComponent } from '../components/common/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { EmailLoginCheckDirective } from "../service/async-validator.service";
+import { EmailLoginCheckDirective, MustMatchDirective } from "../service/async-validator.service";
 import { MatInputModule } from '@angular/material/input';
 import { UserDisplayPipe } from "../pipes/user-display.pipe";
 import { NbMenuModule, NbSidebarModule, NbLayoutModule, NbIconModule, NbUserModule, NbActionsModule, NbContextMenuModule, NbSelectModule } from "@nebular/theme";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [
         NavbarComponent,
         EmailLoginCheckDirective,
-        UserDisplayPipe
+        UserDisplayPipe,
+        MustMatchDirective
     ],
     imports: [
         CommonModule,
@@ -30,7 +36,12 @@ import { NbEvaIconsModule } from "@nebular/eva-icons";
         NbUserModule,
         NbContextMenuModule,
         NbEvaIconsModule,
-        NbSelectModule
+        NbSelectModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatStepperModule,
+        MatCheckboxModule,
+        MatPaginatorModule,
     ],
     exports: [
         NavbarComponent,
@@ -48,7 +59,13 @@ import { NbEvaIconsModule } from "@nebular/eva-icons";
         NbUserModule,
         NbContextMenuModule,
         NbEvaIconsModule,
-        NbSelectModule
+        NbSelectModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatStepperModule,
+        MustMatchDirective,
+        MatCheckboxModule,
+        MatPaginatorModule,
     ],
 })
 export class MainSharedModule { }

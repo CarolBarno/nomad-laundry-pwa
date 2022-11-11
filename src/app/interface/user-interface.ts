@@ -7,5 +7,4 @@ export interface CurrentUser {
     isVerified: boolean;
     password_expiry: string;
     user_type: number;
-    country_id: number;
 }

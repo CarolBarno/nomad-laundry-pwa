@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-declare let toaster: any;
+declare let toastr: any;
 export interface Toaster {
   "progressBar": boolean;
   "timeOut": number;
@@ -12,7 +12,6 @@ export interface Toaster {
   providedIn: 'root'
 })
 export class AlertService {
-
   toaster = {
     "closeButton": true,
     "debug": false,
@@ -34,28 +33,29 @@ export class AlertService {
   constructor() { }
 
   success(message: string, title?: string, config?: Toaster) {
-    toaster.options = this.toaster
-    toaster.success(message, title)
+    // Object.assign(this.toaster, config)
+    toastr.options = this.toaster
+    toastr.success(message, title)
   }
 
   info(message: string, title?: string, config?: Toaster) {
     Object.assign(this.toaster, config);
-    toaster.options = this.toaster;
-    toaster.info(message, title)
+    toastr.options = this.toaster;
+    toastr.info(message, title)
   }
 
   warning(message: string, title?: string, config?: Toaster) {
-    toaster.options = this.toaster
-    toaster.warning(message, title)
+    toastr.options = this.toaster
+    toastr.warning(message, title)
   }
 
   error(message: string, title?: string, config?: Toaster) {
     Object.assign(this.toaster, config);
-    toaster.options = this.toaster
-    toaster.error(message, title)
+    toastr.options = this.toaster
+    toastr.error(message, title)
   }
 
   clear(): void {
-    toaster.clear()
+    toastr.clear()
   }
 }
