@@ -49,7 +49,7 @@ export class DataService {
   }
 
   getSiteSettings(): Observable<any> {
-    return this.feathers.service('site-settings').watch().find({
+    return this.feathers.service('laundry-site-settings').watch().find({
       query: {
         $limit: 1,
         is_host: true
