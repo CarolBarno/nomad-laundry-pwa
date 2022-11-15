@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent, TermsAndConditionsComponent } from './components/home/home.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { NbThemeModule } from '@nebular/theme';
 import { AuthService } from './service/auth.service';
 import { FeathersService } from './service/feathers.service';
+import { RegisterComponent } from './components/common/register/register.component';
+import { ProgressColorDirective } from './directives/progress-color.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { FeathersService } from './service/feathers.service';
     HomeComponent,
     NotFoundPageComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    TermsAndConditionsComponent,
+    ProgressColorDirective
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,7 @@ import { FeathersService } from './service/feathers.service';
     AuthService,
     FeathersService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TermsAndConditionsComponent]
 })
 export class AppModule { }

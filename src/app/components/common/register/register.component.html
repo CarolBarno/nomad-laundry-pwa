@@ -1,0 +1,199 @@
+<nb-layout>
+  <nb-layout-column class="nb-lay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="register">
+            <div register>
+              <div class="logo">
+                <section>
+                  <img src="../../assets/image/nl_logo.png" width="150" alt="Nomad Laundry">
+                </section>
+              </div>
+
+              <div class="register-header">
+                <h3>Sign Up</h3>
+                <p>Create your account and book our services at your convinience.</p>
+                <mat-progress-bar *ngIf='registrationDone' mode="indeterminate"></mat-progress-bar>
+              </div>
+
+              <form #registrationForm='ngForm' (ngSubmit)='onSubmit(registrationForm)'
+                [mustMatch]="['password', 'confirm_password']">
+                <mat-horizontal-stepper labelPosition='bottom' #stepper linear>
+                  <mat-step [stepControl]="registrationForm.control">
+                    <ng-template class="registration-label" matStepLabel>
+                      Account
+                    </ng-template>
+                    <div class="form-fields">
+                      <div id="names">
+                        <mat-form-field class="field name-field" appearance="outline">
+                          <mat-label>First Name</mat-label>
+                          <input [(ngModel)]='userData.first_name' type="text" minlength="2" name="first_name"
+                            #firstname='ngModel' required matInput placeholder="First Name">
+                          <mat-error *ngIf='firstname.errors?.required'>required</mat-error>
+                          <mat-error *ngIf='firstname.errors?.firstname'>wrong name format</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="field" appearance="outline">
+                          <mat-label>Last Name</mat-label>
+                          <input [(ngModel)]='userData.last_name' minlength="2" #lastname='ngModel' name="last_name"
+                            type="text" required matInput placeholder="Last Name">
+                          <mat-error *ngIf='lastname.errors?.required'>required</mat-error>
+                          <mat-error *ngIf='lastname.errors?.lastname'>wrong name format</mat-error>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="passwords email-phone">
+                        <!-- Id number field -->
+                        <mat-form-field class="field" appearance="outline">
+                          <mat-label>Id/Passport Number</mat-label>
+                          <input [(ngModel)]='userData.id_number' id="id_number" #id_number="ngModel" required
+                            pattern=".{5,20}" type="text" name='id_number' matInput placeholder="Id Number"
+                            [ngModelOptions]='{updateOn:"blur"}' appUniqueIdNumber>
+                          <mat-error *ngIf='id_number.errors?.required'>Required</mat-error>
+                          <mat-error *ngIf='id_number.errors?.id_number'>This id is already taken</mat-error>
+                          <mat-error *ngIf='id_number.errors?.pattern'>Id number should be more than 5 digits
+                          </mat-error>
+                          <mat-error *ngIf='id_number.errors?.uniqueIdNumber'>Id number already registered</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="field" appearance="outline">
+                          <mat-label>Email Address</mat-label>
+                          <input name="email" autocomplete="email" [(ngModel)]='userData.email' id="idDoNot"
+                            [email]='true' matInput type="email" #email='ngModel' required
+                            [ngModelOptions]='{updateOn:"blur"}' placeholder="email" appUniqueEmail>
+                          <mat-error *ngIf='email.errors?.required'>Required</mat-error>
+                          <mat-error *ngIf='email.errors?.user_email'>This email is already taken</mat-error>
+                          <mat-error *ngIf='email.errors?.uniqueEmail'>This email is already taken</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="field">
+                          <mat-label>Phone number</mat-label>
+                          <input name="phone_number" [(ngModel)]='userData.phone_number' [email]='true' matInput
+                            type="tel" #phone_number='ngModel' required [ngModelOptions]='{updateOn:"blur"}'
+                            placeholder="Phone Number" appUniquePhone>
+                          <mat-error *ngIf="phone_number?.errors?.validatePhoneNumber">Invalid phone number</mat-error>
+                          <mat-error *ngIf='phone_number.errors?.uniquePhone'>Looks like the phone number is already
+                            registered
+                          </mat-error>
+                        </mat-form-field>
+
+                      </div>
+
+                      <div class="passwords pass-confirm">
+                        <mat-form-field class="field" appearance="outline">
+                          <mat-label>Password</mat-label>
+                          <input [(ngModel)]='userData.password' autocomplete="new-password"
+                            (keyup)='checkPassword(userData.password)' minlength="5" required name="password"
+                            type="password" matInput placeholder="password">
+                          <mat-error>Password must be atleast 5 characters</mat-error>
+                          <mat-progress-bar class="green-progress" mode="determinate" [value]="strength">
+                          </mat-progress-bar>
+                        </mat-form-field>
+
+                        <mat-form-field class="field" appearance="outline">
+                          <mat-label>Confirm Password</mat-label>
+                          <input [(ngModel)]='userData.confirm_password' #c_pass='ngModel' name="confirm_password"
+                            matInput type="password" required placeholder="confirm password">
+                          <mat-error *ngIf='c_pass.errors?.required'>required</mat-error>
+                          <mat-error *ngIf='c_pass.errors?.mustMatch'>password do not match</mat-error>
+                        </mat-form-field>
+                      </div>
+
+                      <!--terms-->
+                      <div class="terms">
+                        <mat-checkbox [(ngModel)]='agreeTerms' name='agreeTerms' [checked]='agreeTerms'>
+                          I agree to the <a (click)='openTerms()' routerLink='.'>terms and
+                            conditions</a>
+                        </mat-checkbox>
+                      </div>
+
+                      <!-- errors -->
+                      <div class="errors alert alert-danger" *ngIf='userError && !registrationForm.valid'>
+                        <span>Please fix the following errors</span>
+                        <div class=" error-list">
+                          <div class="small" *ngFor='let error of userError |keyvalue'>{{error.value}}</div>
+                        </div>
+                      </div>
+
+                      <!-- matStepperNext -->
+                      <button [class.spinner]="otpLoading" [disabled]='otpLoading || !agreeTerms'
+                        (click)='otp(stepper,registrationForm)' type='button' btn-signup mat-button class="otp-button">
+                        Continue
+                      </button>
+
+                    </div>
+                  </mat-step>
+
+                  <mat-step>
+                    <ng-template class="registration-label" matStepLabel>Complete</ng-template>
+                    <div>
+                      <p>Confirm Your Phone number</p>
+                      <div class=""
+                        [ngClass]="{'alert alert-danger':generalError==true,'alert alert-success':generalError==false}">
+                        <ng-template #number>
+                          <small *ngIf='!resendButton'>A verification code has been sent to the number provided
+                            {{userData.phone_number}}. Resend in
+                          </small>
+
+                          <small *ngIf='resendButton' style="font-size: 11px; margin: 0; padding: 0;"
+                            class="small alert-danger text-danger">
+                            Did not get the OTP?</small>
+                        </ng-template>
+                        <small *ngIf='generalError; else number'>{{errorMessage}}</small>
+                        <small> {{min}}:{{sec}}</small>
+                        <span *ngIf='resendButton'>
+                          <button id="otp-resend" type="button" (click)='resendOtp()' mat-stroked-button
+                            class="btn btn-sm" color='primary'>
+                            Resend
+                          </button>
+                        </span>
+                      </div>
+                      <mat-form-field style="margin-bottom: 0; padding-bottom: 0;" class="field" appearance="outline">
+                        <mat-label>Enter OTP</mat-label>
+                        <input pattern="\d*" [disabled]='dissableOtpInput' maxlength="4" [(ngModel)]='userData.otp'
+                          name="otp" matInput type="text" placeholder="Enter OTP sent to your phone">
+                        <mat-error>Required</mat-error>
+                        <mat-hint *ngIf='OTPexpired' class="otp-expired">OTP expired.</mat-hint>
+                      </mat-form-field>
+
+                    </div>
+
+                    <div class="done-btns">
+                      <button type='button' mat-button (click)='clearOtpTimer()' matStepperPrevious title="Go back"
+                        mat-button color='accent'>
+                        <mat-icon>arrow_back</mat-icon>
+                        Back
+                      </button>
+
+                      <button [disabled]='!userData.otp || disabbleRegButton' [class.spinner]="registerLoading"
+                        [disabled]="registerLoading" btn-signup mat-button color='primary'>Sign Up </button>
+                    </div>
+
+                  </mat-step>
+                </mat-horizontal-stepper>
+              </form>
+              <!-- terms -->
+              <div class="have-account">
+                <p>Already have an account? <a [routerLink]="['/accounts/login']">Sign In</a></p>
+              </div>
+            </div>
+
+            <div class="home">
+              <p>
+                <small>
+                  <a routerLink='/'>
+                    <mat-icon>arrow_back</mat-icon>Back to home page.
+                  </a>
+                </small>
+
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

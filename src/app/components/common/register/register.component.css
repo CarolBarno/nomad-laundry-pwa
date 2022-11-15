@@ -1,0 +1,313 @@
+.register {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+p {
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.form-fields > * {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0;
+  font-size: 11px;
+}
+
+form {
+  padding: 0 !important;
+}
+
+mat-form-field mat-label {
+  color: #02082b;
+  opacity: 1;
+}
+
+input {
+  font-size: 16px;
+  color: #02082b !important;
+  border-color: #e9e9f0 !important;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #f4f3f9;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #02082b;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #02082b;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #02082b;
+}
+
+mat-label {
+  font-size: 15px;
+  text-overflow: ellipsis;
+}
+
+#names {
+  display: flex;
+  flex-direction: row !important;
+}
+
+#names > * {
+  width: 50%;
+}
+
+#names > input {
+  text-overflow: ellipsis;
+}
+
+.passwords {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.pass-confirm > * {
+  width: 50%;
+}
+
+.email-phone > * {
+  width: 33.3%;
+}
+
+.passwords mat-form-field {
+  padding: 0.2em;
+}
+
+.passwords > input {
+  text-overflow: ellipsis;
+}
+
+[btn-signup] {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 16px !important;
+  background-color: #c77fc1;
+  color: white;
+  width: fit-content;
+}
+
+[btn-signup]:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(71, 67, 67, 0.4);
+}
+
+.have-account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 1.9em 0 1.9em;
+}
+
+.have-account a {
+  text-decoration: underline;
+}
+
+[btn-back] {
+  text-align: start;
+}
+
+.nb-lay {
+  background-color: white;
+}
+
+.loading {
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#otp-resend {
+  padding: 0;
+  font-size: small;
+  margin: 0.2em;
+}
+
+.text:hover {
+  width: auto;
+  overflow: visible;
+  z-index: 11;
+}
+
+.errors {
+  text-align: start !important;
+  border: 1px solid rgba(red, red, red, 0.5);
+  font-size: small;
+  font-size: 10px;
+  padding: 0.5em;
+}
+
+.error-list {
+  margin: 0.5em;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+.display-none {
+  display: none;
+}
+
+#phone-input ngx-mat-intl-tel-input {
+  font-size: 14px;
+}
+
+input:not(.country-search) {
+  bottom: 3px;
+  left: 10px;
+}
+
+.terms {
+  text-align: center;
+}
+
+.mat-menu-content:not(:empty) {
+  max-height: 250px;
+}
+
+.green-progress .mat-progress-bar-fill::after {
+  background-color: green !important;
+}
+
+.otp-button {
+  background-color: #c77fc1;
+  color: white;
+}
+
+.otp-button:disabled {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(71, 67, 67, 0.4);
+}
+
+.register-header {
+  margin: 2.5em 0 1em 0;
+}
+
+.register-header > h3,
+p {
+  color: #02082b !important;
+  font: bold;
+}
+
+.country-residence mat-form-field {
+  width: 100%;
+}
+
+.email-phone-id mat-form-field {
+  width: 33%;
+}
+
+.id-field,
+.email-field,
+.name-field {
+  margin-right: 0.2rem;
+}
+
+.home mat-icon {
+  vertical-align: middle;
+}
+
+.home {
+  text-align: center;
+  margin-top: 2.9em;
+}
+
+.home a {
+  text-decoration: underline;
+}
+
+.otp-buttons,
+.done-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.otp-buttons button {
+  width: 100%;
+}
+
+.done-btns button {
+  width: 100%;
+}
+
+.done-btns :nth-child(1) {
+  background-color: #02082b;
+  color: white;
+}
+
+.otp-buttons :nth-child(1) {
+  background-color: #02082b;
+  color: white;
+}
+
+@media screen and (max-width: 471px) {
+  .id-field,
+  .email-field,
+  .name-field {
+    margin: 0;
+  }
+
+  .register {
+    background-color: #f4f3f9;
+  }
+
+  [register],
+  .have-account {
+    padding-top: 1.5rem;
+  }
+
+  div.email-phone-id > * {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  div.passwords > * {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.registration-label {
+  color: #02082b;
+}
+
+.otp-expired {
+  color: #c77fc1 !important;
+}
