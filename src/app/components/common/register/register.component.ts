@@ -197,9 +197,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.userError = error.errors;
       this.otpLoading = false;
       for (let i in this.userError) {
-        let error: any = {};
+        let error = {};
         error[i] = true;
-        form?.controls[i].setErrors(error);
+        form.controls[i].setErrors(error);
       }
     });
     return;

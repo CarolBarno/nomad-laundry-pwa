@@ -69,8 +69,8 @@
 
                         <mat-form-field appearance="outline" class="field">
                           <mat-label>Phone number</mat-label>
-                          <input name="phone_number" [(ngModel)]='userData.phone_number' [email]='true' matInput
-                            type="tel" #phone_number='ngModel' required [ngModelOptions]='{updateOn:"blur"}'
+                          <input name="phone_number" [(ngModel)]='userData.phone_number' matInput type="tel"
+                            #phone_number='ngModel' required [ngModelOptions]='{updateOn:"blur"}'
                             placeholder="Phone Number" appUniquePhone>
                           <mat-error *ngIf="phone_number?.errors?.validatePhoneNumber">Invalid phone number</mat-error>
                           <mat-error *ngIf='phone_number.errors?.uniquePhone'>Looks like the phone number is already
@@ -151,7 +151,7 @@
                       </div>
                       <mat-form-field style="margin-bottom: 0; padding-bottom: 0;" class="field" appearance="outline">
                         <mat-label>Enter OTP</mat-label>
-                        <input pattern="\d*" [disabled]='dissableOtpInput' maxlength="4" [(ngModel)]='userData.otp'
+                        <input pattern="\d*" [disabled]='dissableOtpInput' maxlength="6" [(ngModel)]='userData.otp'
                           name="otp" matInput type="text" placeholder="Enter OTP sent to your phone">
                         <mat-error>Required</mat-error>
                         <mat-hint *ngIf='OTPexpired' class="otp-expired">OTP expired.</mat-hint>

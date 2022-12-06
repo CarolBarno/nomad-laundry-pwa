@@ -41,6 +41,6 @@ export class SharedService {
   }
 
   async isEmailTaken(email: any) {
-    return await this.userInputVerification({ email: email, action: 'AsyncValidator' });
+    return await this.userInputVerification({ email, action: 'AsyncValidator' });
   }
 }
