@@ -166,8 +166,8 @@
                         Back
                       </button>
 
-                      <button [disabled]='!userData.otp || disabbleRegButton' [class.spinner]="registerLoading"
-                        [disabled]="registerLoading" btn-signup mat-button color='primary'>Sign Up </button>
+                      <button [disabled]='!userData.otp || disabbleRegButton || registerLoading'
+                        [class.spinner]="registerLoading" btn-signup mat-button color='primary'>Sign Up </button>
                     </div>
 
                   </mat-step>

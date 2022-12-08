@@ -267,7 +267,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   async confirmOtp({ otp }: any) {
     let hashed = await this.otpService.decryptOtp();
-    return otp === hashed;
+    return otp === hashed.otp;
   }
 
   ngOnDestroy(): void {
