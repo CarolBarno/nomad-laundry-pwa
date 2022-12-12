@@ -197,9 +197,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.userError = error.errors;
       this.otpLoading = false;
       for (let i in this.userError) {
-        let error: any = {};
+        let error = {};
         error[i] = true;
-        form?.controls[i].setErrors(error);
+        form.controls[i].setErrors(error);
       }
     });
     return;
@@ -267,7 +267,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   async confirmOtp({ otp }: any) {
     let hashed = await this.otpService.decryptOtp();
-    return otp === hashed;
+    return otp === hashed.otp;
   }
 
   ngOnDestroy(): void {
