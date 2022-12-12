@@ -4,7 +4,9 @@ import { LoginComponent } from './components/common/login/login.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { RegisterComponent } from './components/common/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { ChangeDefaultPasswordComponent } from './components/laundry-user/change-default-password/change-default-password.component';
 import { EnforceDefaultPasswordChangeGuard } from './guard/enforce-default-password-change.guard';
+import { PreventChangesGuard } from './guard/password-change/prevent-changes.guard';
 import { RedirectAuthGuard } from './guard/protect-login/redirect-auth.guard';
 
 const routes: Routes = [
@@ -26,6 +28,11 @@ const routes: Routes = [
     path: 'accounts/login',
     component: LoginComponent,
     canActivate: [RedirectAuthGuard]
+  },
+  {
+    path: 'user/password-change',
+    component: ChangeDefaultPasswordComponent,
+    canActivate: [PreventChangesGuard]
   },
   {
     path: '',

@@ -17,6 +17,7 @@ import { AuthService } from './service/auth.service';
 import { FeathersService } from './service/feathers.service';
 import { RegisterComponent } from './components/common/register/register.component';
 import { ProgressColorDirective } from './directives/progress-color.directive';
+import { ChangeDefaultPasswordComponent } from './components/laundry-user/change-default-password/change-default-password.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProgressColorDirective } from './directives/progress-color.directive';
     LoginComponent,
     RegisterComponent,
     TermsAndConditionsComponent,
-    ProgressColorDirective
+    ProgressColorDirective,
+    ChangeDefaultPasswordComponent
   ],
   imports: [
     BrowserModule,

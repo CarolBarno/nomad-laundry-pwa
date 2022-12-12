@@ -57,6 +57,11 @@ export class DataService {
     }).pipe(map((resposne: Paginated<any>) => resposne.data));
   }
 
+  changePassword(userPassword: any, id: number): Observable<any> {
+    return this.feathers.service('users').watch().patch(id, userPassword)
+      .pipe(map(response => response));
+  }
+
   private handleError<T>(operarion = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
