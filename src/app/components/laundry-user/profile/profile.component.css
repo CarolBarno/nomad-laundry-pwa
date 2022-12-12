@@ -1,0 +1,16 @@
+@media screen and (max-width: 781px) {
+  .profile-info {
+    display: none;
+  }
+}
+
+.profile > a > mat-icon {
+  font-size: 10rem;
+  color: turquoise;
+}
+
+@media screen and (min-width: 576px) {
+  .mobile-view {
+    display: none;
+  }
+}

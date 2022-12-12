@@ -88,4 +88,14 @@ export class AuthService {
     }
     changeState();
   }
+
+  getAuthUser(id: number): Promise<any> {
+    return this.feathers.service('users').get(id, {
+      query: { $select: ['two_step_auth_set', 'two_step_auth_status'] }
+    });
+  }
+
+  connectionStatus(): boolean {
+    return this.feathers.checkServerStatus();
+  }
 }

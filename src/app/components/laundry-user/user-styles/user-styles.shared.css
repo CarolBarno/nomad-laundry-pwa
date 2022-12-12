@@ -1,0 +1,18 @@
+.cusom-color {
+  color: #5c57a5;
+}
+
+.submit {
+  background-color: #f15b62;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #5c57a5;
+  transition: 300ms;
+}
+
+.submit:disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: white;
+}

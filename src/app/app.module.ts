@@ -18,6 +18,7 @@ import { FeathersService } from './service/feathers.service';
 import { RegisterComponent } from './components/common/register/register.component';
 import { ProgressColorDirective } from './directives/progress-color.directive';
 import { ChangeDefaultPasswordComponent } from './components/laundry-user/change-default-password/change-default-password.component';
+import { GuardGuard } from './guard/guard.guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ChangeDefaultPasswordComponent } from './components/laundry-user/change
   ],
   providers: [
     AuthService,
-    FeathersService
+    FeathersService,
+    GuardGuard
   ],
   bootstrap: [AppComponent],
   entryComponents: [TermsAndConditionsComponent]
