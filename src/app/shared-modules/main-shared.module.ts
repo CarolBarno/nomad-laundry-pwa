@@ -14,6 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -42,6 +44,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatStepperModule,
         MatCheckboxModule,
         MatPaginatorModule,
+        MatCardModule,
+        FormsModule,
     ],
     exports: [
         NavbarComponent,
@@ -66,6 +70,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MustMatchDirective,
         MatCheckboxModule,
         MatPaginatorModule,
+        MatCardModule,
+        FormsModule,
     ],
 })
 export class MainSharedModule { }

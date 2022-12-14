@@ -6,6 +6,7 @@ import { GuardGuard } from 'src/app/guard/guard.guard';
 import { TwoStepAuthGuard } from 'src/app/guard/two-step-auth.guard';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
       {
         path: 'change-password',
         component: ChangePasswordComponent
+      },
+      // should always be the last route in this array
+      {
+        path: ':name',
+        component: UserDashboardComponent
       }
     ]
   }

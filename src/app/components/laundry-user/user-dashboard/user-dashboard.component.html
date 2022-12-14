@@ -1,0 +1,39 @@
+<mat-card>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <section>
+          <h6>Welcome to your dashboard
+            <span style="text-decoration: underline;">
+              {{currentUser.first_name}} {{currentUser.last_name}}
+            </span>
+          </h6>
+          <p>Here is a quick guide. </p>
+        </section>
+        <a routerLink=".">Learn how to book a service(s)!</a>
+      </div>
+      <div class="col-md-6" *ngIf="pendingAction">
+        <div class="alert alert-danger">
+          <h5>
+            <mat-icon>info</mat-icon> Important
+          </h5>
+          <p>In order to make payment, your email must be verified and <strong> KYC documents uploaded.</strong>
+          </p>
+          <p *ngIf="!currentUser?.id_upload"><small>Update KYC documents <a
+                routerLink='/profile/edit-profile'>here</a></small></p>
+          <p *ngIf="!currentUser?.isVerified"><small>Verify your email <a
+                routerLink="/profile/verification">here</a></small></p>
+        </div>
+      </div>
+    </div>
+    <div style="margin: 1.5em;" class="row">
+      <div class="col-md-4 card" (click)="navigateToPassword()">
+        <div class="card-body">
+          <p>Change password</p>
+        </div>
+      </div>
+      <div class="col-md-4 card"></div>
+      <div class="col-md-4 card"></div>
+    </div>
+  </div>
+</mat-card>

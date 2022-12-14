@@ -14,7 +14,7 @@ export class TwoStepAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.checkLocalStorageDetails()) {
       return this.authService.logIn().then(async response => {
-        const user = await this.authService.getAuthUser(response.id);
+        const user = await this.authService.getAuthUser(response.user.id);
         if (user.two_step_auth_set) {
           if (user.two_step_auth_status) {
             return true;

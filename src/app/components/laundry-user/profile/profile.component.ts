@@ -19,8 +19,8 @@ export class ProfileComponent implements OnInit {
       icon: 'edit',
       children: [
         {
-          title: '',
-          link: ''
+          title: 'Change Password',
+          link: '/profile/change-password'
         }
       ]
     }

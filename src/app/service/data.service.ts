@@ -62,6 +62,23 @@ export class DataService {
       .pipe(map(response => response));
   }
 
+  checkUserActions(user: any): boolean {
+    let pendingAction: boolean = false;
+    const metrics: any = {
+      idUploaded: user.id_upload,
+      isVerified: user.isVerified
+    };
+
+    for(let i in metrics) {
+      if(!metrics[i]) {
+        pendingAction = true;
+        break;
+      }
+    }
+
+    return pendingAction;
+  }
+
   private handleError<T>(operarion = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
