@@ -10,4 +10,5 @@ export interface userData {
   otp: string;
   action?: string;
   user_status?: string;
+  two_step_auth_set?: boolean;
 }
