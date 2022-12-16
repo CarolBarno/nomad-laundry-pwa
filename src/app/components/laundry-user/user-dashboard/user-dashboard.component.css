@@ -1,0 +1,10 @@
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 300ms;
+  border-bottom: 0.3em solid rgb(35, 169, 187);
+}
+
+.card::after {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out;
+}

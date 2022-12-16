@@ -1,0 +1,18 @@
+.custom-color {
+  color: #02082b;
+}
+
+.submit {
+  background-color: #c77fc1;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #02082b;
+  transition: 300ms;
+}
+
+.submit:disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: white;
+}

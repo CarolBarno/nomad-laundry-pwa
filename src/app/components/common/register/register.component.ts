@@ -45,8 +45,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     phone_number: '',
     otp: '',
     action: 'sendEmail',
-    user_status: 'A',
-    user_type: 1
+    user_status: 'P',
+    user_type: 1,
+    two_step_auth_set: false
   };
   resendButton = false;
   registerLoading = false;

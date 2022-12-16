@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { CurrentUser } from '../interface/user-interface';
 import { FeathersService } from './feathers.service';
 
@@ -34,7 +33,7 @@ export class AuthService {
   public async logOut() {
     let l = await this.feathers.logout();
     if (!l) { return; }
-    const currentUser = localStorage.getItem('nomadLaundryCurrentUser');
+    const currentUser = JSON.parse(localStorage.getItem('nomadLaundryCurrentUser'));
     if (!currentUser) { return; }
     this.clearLocalStorage();
     this.router.navigate(['accounts/login']);
@@ -87,5 +86,15 @@ export class AuthService {
       });
     }
     changeState();
+  }
+
+  getAuthUser(id: number): Promise<any> {
+    return this.feathers.service('users').get(id, {
+      query: { $select: ['two_step_auth_set', 'two_step_auth_status'] }
+    });
+  }
+
+  connectionStatus(): boolean {
+    return this.feathers.checkServerStatus();
   }
 }

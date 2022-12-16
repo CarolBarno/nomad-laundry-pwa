@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<nb-layout>
+  <nb-sidebar style="margin-top: 0; top: 0;" responsive>
+    <div class="sidebar-btn">
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+    </div>
+    <div class="profile-info">
+      <div class="profile">
+        <a title="Go to Dashboard" routerLink="{{currentUser?.first_name}}-{{currentUser?.last_name}}">
+          <mat-icon>person</mat-icon>
+        </a>
+        <span>{{currentUser?.first_name}} {{currentUser?.last_name}}</span>
+      </div>
+    </div>
+    <nb-menu style="margin-bottom: 5em;" class="menu-sidebar" *ngIf="items" [items]="items" autoCollapse="true">
+    </nb-menu>
+  </nb-sidebar>
+  <nb-layout-column>
+    <div class="sidebar-btn mobile-view">
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+    </div>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <nb-layout-footer id="footer" fixed>
+    <footer>
+      <div class="g-footer">
+        <p>Copyright © {{thisYear}}. All rights reserved. </p>
+      </div>
+    </footer>
+  </nb-layout-footer>
+</nb-layout>
