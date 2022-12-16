@@ -1,14 +1,14 @@
-.cusom-color {
-  color: #5c57a5;
+.custom-color {
+  color: #02082b;
 }
 
 .submit {
-  background-color: #f15b62;
+  background-color: #c77fc1;
   color: white;
 }
 
 .submit:hover {
-  background-color: #5c57a5;
+  background-color: #02082b;
   transition: 300ms;
 }
 

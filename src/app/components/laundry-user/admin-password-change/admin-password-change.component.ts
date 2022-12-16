@@ -24,7 +24,7 @@ export class AdminPasswordChangeComponent implements OnInit, OnDestroy {
     current_password: null,
     new_password: null,
     confirm_password: null,
-    action: 'validUserChangePasword'
+    action: 'validUserChangePassword'
   };
   criteriaMap = new Map<Criteria, RegExp>();
   containAtLeastEightChars: boolean;
