@@ -105,4 +105,9 @@ export class AuthService {
     };
     return <any>this.feathers.service('authManagement').watch().create(data);
   }
+
+  setTwoStepAuth(user: any): Promise<any> {
+    if (!user.id) return;
+    return this.feathers.service('users').patch(user.id, { action: 'userSetTwoStepAuth' });
+  }
 }

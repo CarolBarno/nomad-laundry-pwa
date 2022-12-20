@@ -29,6 +29,10 @@ export class ProfileComponent implements OnInit {
         {
           title: 'Verification',
           link: '/profile/verification'
+        },
+        {
+          title: 'Security',
+          link: '/profile/security'
         }
       ]
     }

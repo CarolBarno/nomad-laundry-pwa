@@ -5,6 +5,7 @@ import { AdminPasswordChangeComponent } from '../admin-password-change/admin-pas
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { EditPhoneEmailDialog, EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { TwoStepAuthComponent } from '../two-step-auth/two-step-auth.component';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
 import { VerificationComponent } from '../verification/verification.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -17,7 +18,8 @@ import { UserRoutingModule } from './user-routing.module';
     UserDashboardComponent,
     EditProfileComponent,
     VerificationComponent,
-    EditPhoneEmailDialog
+    EditPhoneEmailDialog,
+    TwoStepAuthComponent,
   ],
   imports: [
     CommonModule,

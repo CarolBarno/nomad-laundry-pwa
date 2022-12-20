@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EnforcePassChangeGuard } from 'src/app/guard/admin-pass-change/enforce-pass-change.guard';
 import { IsAdminGuard } from 'src/app/guard/is-admin.guard';
+import { TwoStepAuthGuard } from 'src/app/guard/two-step-auth.guard';
 import { AdminHomeComponent } from '../views/admin-home/admin-home.component';
 import { DashboardComponent } from '../views/dashboard/dashboard.component';
 
@@ -10,7 +11,7 @@ const routes: Routes = [
     {
         path: '',
         component: DashboardComponent,
-        canActivate: [IsAdminGuard, EnforcePassChangeGuard],
+        canActivate: [IsAdminGuard, EnforcePassChangeGuard, TwoStepAuthGuard],
         children: [
             {
                 path: '',
