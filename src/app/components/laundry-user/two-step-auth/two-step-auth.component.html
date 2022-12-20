@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <mat-card>
+        <div class="header">
+          <h6>Set up two step authentication</h6>
+          <p class="info">Two step auth improves the security of your account</p>
+          <p class="small">When you login, you will be required to complete sign in by verifying your phone number
+            through OTP</p>
+        </div>
+
+        <div *ngIf="currentUser?.two_step_auth_set" class="complete">
+          <div class="text-center">
+            <p class="text-info">Your account is secured with two step authentication.</p>
+          </div>
+        </div>
+
+        <mat-card-content *ngIf="!currentUser?.two_step_auth_set">
+          <div class="content">
+            <button [disabled]="otpSent" (click)="sendOtp()" mat-stroked-button color="primary">
+              Set Up Two Step Auth
+            </button>
+            <span class="text-success" *ngIf="otpSent">OTP sent to the phone number ending with XXX XXX
+              {{lastDigit}}</span>
+          </div>
+
+          <div class="otp" *ngIf="otpSent">
+            <form #otpF="ngForm" (ngSubmit)="completeSetUp(otpF)" novalidate>
+              <mat-form-field apperance="outline">
+                <input [(ngModel)]="otpForm.otp" matInput type="text" maxlength="4" name="otp" placeholder="Enter OTP">
+              </mat-form-field>
+              <div class="submit-btn">
+                <button [disabled]="otpF.invalid" mat-stroked-button color="primary">
+                  <i *ngIf="submittingOtp" class="fa fa-spinner fa-spin"></i>
+                  Complete Setup
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

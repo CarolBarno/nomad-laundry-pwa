@@ -151,7 +151,7 @@
                       </div>
                       <mat-form-field style="margin-bottom: 0; padding-bottom: 0;" class="field" appearance="outline">
                         <mat-label>Enter OTP</mat-label>
-                        <input pattern="\d*" [disabled]='dissableOtpInput' maxlength="6" [(ngModel)]='userData.otp'
+                        <input pattern="\d*" [disabled]='dissableOtpInput' maxlength="4" [(ngModel)]='userData.otp'
                           name="otp" matInput type="text" placeholder="Enter OTP sent to your phone">
                         <mat-error>Required</mat-error>
                         <mat-hint *ngIf='OTPexpired' class="otp-expired">OTP expired.</mat-hint>

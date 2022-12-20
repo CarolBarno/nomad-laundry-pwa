@@ -8,6 +8,7 @@ import { ChangeDefaultPasswordComponent } from './components/laundry-user/change
 import { EnforceDefaultPasswordChangeGuard } from './guard/enforce-default-password-change.guard';
 import { PreventChangesGuard } from './guard/password-change/prevent-changes.guard';
 import { RedirectAuthGuard } from './guard/protect-login/redirect-auth.guard';
+import { TwoStepAuthGuard } from './guard/two-step-auth.guard';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [EnforceDefaultPasswordChangeGuard]
+    canActivate: [EnforceDefaultPasswordChangeGuard, TwoStepAuthGuard]
   },
   {
     path: '**',
