@@ -1,0 +1,63 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="logo-container">
+            <img src="../../../../assets/image/nl_logo.png" alt="">
+          </div>
+          <div class="otp-container">
+            <mat-card [ngClass]="{'error': error, 'success': success}">
+              <div *ngIf="error" class="error-message alert alert-danger">
+                <p class="small text-danger">{{errorMessage}}</p>
+              </div>
+              <div class="header">
+                <h6 class="title">Complete Login</h6>
+                <p class="sub-title">Two step auth <mat-icon>screen_lock_portrait</mat-icon></p>
+              </div>
+              <mat-card-content>'
+                <form #otpForm="ngForm" (ngSubmit)="submitOtp(otpForm)" novalidate class="inputs">
+
+                  <mat-form-field class="input-field">
+                    <input [(ngModel)]="otpFormData.first" required name="first" matInput maxlength="1" #firstInp id="first"
+                      (keyup)="focusNext($event, 'first')" type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="input-field">
+                    <input [(ngModel)]="otpFormData.second" required name="second" matInput maxlength="1" #secondInp id="second"
+                      (keyup)="focusNext($event, 'second')" type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="input-field">
+                    <input [(ngModel)]="otpFormData.third" required name="third" matInput maxlength="1" #thirdInp id="third"
+                      (keyup)="focusNext($event, 'third')" type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="input-field">
+                    <input [(ngModel)]="otpFormData.fourth" required name="fourth" matInput maxlength="1" #fourthInp id="fourth"
+                      (keyup)="focusNext($event, 'fourth')" type="text">
+                  </mat-form-field>
+
+                  <span class="timer">
+                    {{timeLimit}} s
+                  </span>
+
+                  <div class="submit-btn">
+                    <button (click)="cancelLogin()" mat-stroked-button color="warn">Cancel</button>
+                    <button (click)="resendOtp()" [disabled]="resendStatus" mat-stroked-button>Resend</button>
+                    <button [disabled]="otpExpired || otpForm.invalid" mat-stroked-button color="primary">
+                      <i *ngIf="submittingOtp" class="fa fa-spinner fa-spin"></i>
+                      Verify
+                    </button>
+                  </div>
+                </form>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

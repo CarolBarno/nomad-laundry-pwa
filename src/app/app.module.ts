@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/common/register/register.compone
 import { ProgressColorDirective } from './directives/progress-color.directive';
 import { ChangeDefaultPasswordComponent } from './components/laundry-user/change-default-password/change-default-password.component';
 import { GuardGuard } from './guard/guard.guard';
+import { CommonTwoStepAuthComponent } from './components/common/common-two-step-auth/common-two-step-auth.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GuardGuard } from './guard/guard.guard';
     RegisterComponent,
     TermsAndConditionsComponent,
     ProgressColorDirective,
-    ChangeDefaultPasswordComponent
+    ChangeDefaultPasswordComponent,
+    CommonTwoStepAuthComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonTwoStepAuthComponent } from './components/common/common-two-step-auth/common-two-step-auth.component';
 import { LoginComponent } from './components/common/login/login.component';
 import { NotFoundPageComponent } from './components/common/not-found-page/not-found-page.component';
 import { RegisterComponent } from './components/common/register/register.component';
@@ -34,6 +35,10 @@ const routes: Routes = [
     path: 'user/password-change',
     component: ChangeDefaultPasswordComponent,
     canActivate: [PreventChangesGuard]
+  },
+  {
+    path: 'two-step-auth',
+    component: CommonTwoStepAuthComponent
   },
   {
     path: '',

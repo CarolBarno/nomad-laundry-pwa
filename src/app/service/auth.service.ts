@@ -110,4 +110,9 @@ export class AuthService {
     if (!user.id) return;
     return this.feathers.service('users').patch(user.id, { action: 'userSetTwoStepAuth' });
   }
+
+  completeUserSignIn(authUser: any): Promise<any> {
+    if (!authUser.id) return;
+    return this.feathers.service('users').patch(authUser.id, { action: 'completeUserSignIn' });
+  }
 }
