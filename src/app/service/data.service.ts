@@ -69,14 +69,29 @@ export class DataService {
       isVerified: user.isVerified
     };
 
-    for(let i in metrics) {
-      if(!metrics[i]) {
+    for (let i in metrics) {
+      if (!metrics[i]) {
         pendingAction = true;
         break;
       }
     }
 
     return pendingAction;
+  }
+
+  updateProfile(data: any, id: number): Observable<any> {
+    return this.feathers.service('users').watch().patch(id, data).pipe(
+      retry(2),
+      tap(() => this.alert.success('Profile updated successfully')),
+      catchError(this.handleError<any>('Profile update'))
+    );
+  }
+
+  getUser(id: number): Observable<any> {
+    return this.feathers.service('users').watch().get(id).pipe(
+      retry(2),
+      map((response) => <CurrentUser>response)
+    );
   }
 
   private handleError<T>(operarion = 'operation', result?: T) {

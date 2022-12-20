@@ -1,0 +1,94 @@
+<div>
+  <button (click)="onNoClick()" mat-stroked-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>
+<p class="custom-color" mat-dialog-title style="text-align: center;">
+  Update {{action ==='email'? 'Email Address' : 'Phone Number'}}
+</p>
+<div *ngIf="action==='email'" mat-dialog-content style="text-align: center;">
+  <div style="text-align: center;" class="current-email">
+    <p class="custom-color">{{user.email}}</p>
+    <p class="alert alert-success"><small>A verification link will be sent to the new email address.</small></p>
+  </div>
+  <form #emailForm="ngForm" (ngSubmit)="changeEmail(emailForm)" novalidate>
+    <div [hidden]="showOtp">
+      <mat-form-field class="field emai-change" appearance="outline">
+        <mat-label>New Email Address</mat-label>
+        <input name="email" #email="ngModel" autocomplete="email" [(ngModel)]="userData.email" id="idDoNot"
+          [email]="true" matInput type="email" required [ngModelOptions]="{updateOn:'blur'}" placeholder="Email"
+          appUniqueEmail>
+        <mat-error *ngIf="email.errors?.required">Required</mat-error>
+        <mat-error *ngIf="email.errors?.user_email">This email is already taken</mat-error>
+        <mat-error *ngIf="email.errors?.uniqueEmail">This email is already taken</mat-error>
+      </mat-form-field>
+      <div>
+        <button class="submit" type="button" [disabled]="sendingOtp || emailForm.invalid"
+          (click)="sendOtp()" mat-stroked-button color="primary">
+          <i *ngIf="sendingOtp" class="fa fa-spinner fa-spin"></i>
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="showOtp">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter OTP</mat-label>
+        <input [(ngModel)]="userData.otp" #otp="ngModel" matInput pattern="\d+" required type="text" name="otp">
+        <mat-error *ngIf="otp.errors?.required">Required</mat-error>
+        <mat-error *ngIf="otp.errors?.pattern">Digit only</mat-error>
+      </mat-form-field>
+
+      <div>
+        <button [disabled]="!emailForm.valid || updatingEmail" mat-stroked-button color="primary">
+          <i *ngIf="updatingEmail" class="fa fa-spinner fa-spin"></i>
+          Confirm
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="action==='phone'" mat-dialog-content style="text-align: center;">
+  <div style="text-align: center;" class="current-email">
+    <p class="custom-color">{{user.phone_number}}</p>
+    <p class="alert alert-succes"><small>A verification code will be sent to thenew phone number.</small></p>
+  </div>
+  <form id="phone-update" #phoneForm="ngForm" (ngSubmit)="changePhoneNumber(phoneForm)" novalidate>
+    <div [hidden]='hidePhoneField'>
+      <mat-form-field appearance="outline" id='phone-input'>
+        <mat-label>Phone number</mat-label>
+        <input name="phone_number" [(ngModel)]='phoneData.phone_number' matInput type="tel" #phone_number='ngModel'
+          required [ngModelOptions]='{updateOn:"blur"}' placeholder="Phone Number" appUniquePhone>
+        <mat-error *ngIf="phone_number?.errors?.validatePhoneNumber">Invalid phone number</mat-error>
+        <mat-error *ngIf='phone_number.errors?.uniquePhone'>Looks like the Phone number is already
+          registered
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button class="submit" mat-stroked-button [disabled]='phoneOtp || phoneForm.invalid' type="button"
+          (click)='sendPhoneOtp()' color='primary'>
+          <i *ngIf='phoneOtp' class="fa fa-spinner fa-spin"></i>
+          Update
+        </button>
+      </div>
+    </div>
+    <div *ngIf='hidePhoneField'>
+      <mat-form-field appearance='outline'>
+        <mat-label>Enter OTP</mat-label>
+        <input [(ngModel)]='phoneData.otp' #otp='ngModel' matInput pattern="\d+" required type="text" name="otp" id="">
+        <mat-error *ngIf='otp.errors?.required'>required</mat-error>
+        <mat-error *ngIf='otp.errors?.pattern'>Digits only</mat-error>
+      </mat-form-field>
+      <div>
+        <button class="submit" [disabled]='!phoneForm.valid || updatingPhone' mat-stroked-button color='primary'>
+          <i *ngIf='updatingPhone' class="fa fa-spinner fa-spin"></i>
+          Confirm
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)='onNoClick()' color='warn'>Exit</button>
+</mat-dialog-actions>

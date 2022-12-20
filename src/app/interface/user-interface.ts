@@ -7,4 +7,7 @@ export interface CurrentUser {
     isVerified: boolean;
     password_expiry: string;
     user_type: number;
+    id_upload: string;
+    phone_number?: string;
+    id_number?: number;
 }

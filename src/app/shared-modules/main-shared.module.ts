@@ -16,6 +16,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from "@angular/forms";
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
     declarations: [
@@ -46,6 +48,8 @@ import { FormsModule } from "@angular/forms";
         MatPaginatorModule,
         MatCardModule,
         FormsModule,
+        MatTabsModule,
+        MatChipsModule,
     ],
     exports: [
         NavbarComponent,
@@ -72,6 +76,8 @@ import { FormsModule } from "@angular/forms";
         MatPaginatorModule,
         MatCardModule,
         FormsModule,
+        MatTabsModule,
+        MatChipsModule,
     ],
 })
 export class MainSharedModule { }

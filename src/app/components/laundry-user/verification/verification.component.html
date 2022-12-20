@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <mat-horizontal-stepper labelPosition="botton" #stepper>
+        <mat-step label="Verify Email">
+          <div *ngIf="checkTokenExpiry(currentUser.verifyExpires)">
+            <p>Verification email on its way...</p>
+            Please check your email for verification link
+            <p><small>Did not get the verification link?</small></p>
+            <p><a mat-stroked-button (click)="resendVerificationEmail()">Resend</a></p>
+          </div>
+          <div *ngIf="currentUser?.isVerified" class="alert alert-success">
+            <p class="verified">
+              <mat-icon class="done-tick">done</mat-icon>
+            </p>
+            Email Verified
+          </div>
+          <div *ngIf="checkTokenExpiry(currentUser.verifyExpires)===false && !currentUser?.isVerified"
+            class="verify-email">
+            <div class="header">
+              <strong>Verify your email</strong>
+            </div>
+            <p>An email with verification link will be sent to the email user during registration.</p>
+            <button (click)="sendVerificationEmail()" [class.spinner]="sendingEmail"
+              [disabled]="sendingEmail || emailSent" mat-stroked-button color="primary">Send verification link
+            </button>
+            <div *ngIf="resendVerification">
+              <p><small>Did not get the verification?</small></p>
+              <p><a mat-stroked-button (click)="resendVerificationEmail()">Resend</a></p>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step label="ID Status">
+          <div *ngIf="!currentUser?.id_upload" class="upload-id-container">
+            <p>Please upload your ID <a routerLink="/profile/edit-profile">here</a></p>
+          </div>
+          <div *ngIf="currentUser?.id_upload" class="alert alert-success">
+            <p class="verified">
+              <mat-icon class="done-tick">done</mat-icon>
+            </p>
+            ID Uploaded
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+      <mat-card>
+        <div class="account alert alert-info">
+          Account Status : {{accountStatus}}.
+          <mat-progress-bar mode="determinate" value="{{status}}"></mat-progress-bar>
+        </div>
+        <div class="details">
+          <ul class="list-group">
+            <li class="list-group-item">
+              Email Verified
+              <mat-icon *ngIf="currentUser.isVerified" class="done">done</mat-icon>
+              <mat-chip *ngIf="!currentUser.isVerified" color="accent" selected>pending</mat-chip>
+            </li>
+            <li class="list-group-item">
+              ID Uploaded
+              <mat-icon *ngIf="currentUser.id_upload" class="done">done</mat-icon>
+              <mat-chip *ngIf="!currentUser.id_upload" color="accent" selected>pending</mat-chip>
+            </li>
+          </ul>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
