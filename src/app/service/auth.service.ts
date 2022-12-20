@@ -97,4 +97,12 @@ export class AuthService {
   connectionStatus(): boolean {
     return this.feathers.checkServerStatus();
   }
+
+  resendEmailVerification(email): Observable<any> {
+    const data: object = {
+      action: 'resendVerifySignup',
+      value: { email }
+    };
+    return <any>this.feathers.service('authManagement').watch().create(data);
+  }
 }

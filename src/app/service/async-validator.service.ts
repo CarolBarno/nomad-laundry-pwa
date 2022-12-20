@@ -86,3 +86,82 @@ export class MustMatchDirective implements Validator {
   }
 }
 
+// unique id number check
+@Injectable({
+  providedIn: 'root'
+})
+export class AsyncValidatorIdNumber implements AsyncValidator {
+  constructor(private sharedService: SharedService) { }
+
+  validate(ctrl: AbstractControl): Observable<any | null> | Promise<any | null> {
+    return this.sharedService.checkIdNumber(ctrl.value).then(
+      isTaken => isTaken ? { uniqueIdNumber: true } : null
+    ).catch(() => of(null))
+  }
+}
+
+@Directive({
+  selector: '[appUniqueIdNumber]',
+  providers: [{ provide: NG_ASYNC_VALIDATORS, useExisting: forwardRef(() => AsyncValidatorIdNumber), multi: true }]
+})
+
+export class UniqueIdNumberDirective {
+  constructor(private validator: AsyncValidatorIdNumber) { }
+  validate(control: AbstractControl) {
+    this.validator.validate(control);
+  }
+}
+
+// unique email check
+@Injectable({
+  providedIn: 'root'
+})
+export class AsyncValidatorEmailService implements AsyncValidator {
+  constructor(private sharedService: SharedService) { }
+
+  validate(ctrl: AbstractControl): Observable<any | null> | Promise<any | null> {
+    return this.sharedService.isEmailTaken(ctrl.value).then(
+      isTaken => isTaken ? { uniqueEmail: true } : null
+    ).catch(() => of(null))
+  }
+}
+
+@Directive({
+  selector: '[appUniqueEmail]',
+  providers: [{ provide: NG_ASYNC_VALIDATORS, useExisting: forwardRef(() => AsyncValidatorIdNumber), multi: true }]
+})
+
+export class UniqueEmailDirective {
+  constructor(private validator: AsyncValidatorEmailService) { }
+  validate(control: AbstractControl) {
+    this.validator.validate(control);
+  }
+}
+
+// unique phone number check
+@Injectable({
+  providedIn: 'root'
+})
+export class AsyncValidatorPhone implements AsyncValidator {
+  constructor(private sharedService: SharedService) { }
+
+  validate(ctrl: AbstractControl): Observable<any | null> | Promise<any | null> {
+    return this.sharedService.checkPhone(ctrl.value).then(
+      isTaken => isTaken ? { uniquePhone: true } : null
+    ).catch(() => of(null))
+  }
+}
+
+@Directive({
+  selector: '[appUniquePhone]',
+  providers: [{ provide: NG_ASYNC_VALIDATORS, useExisting: forwardRef(() => AsyncValidatorIdNumber), multi: true }]
+})
+
+export class UniquePhoneDirective {
+  constructor(private validator: AsyncValidatorPhone) { }
+  validate(control: AbstractControl) {
+    this.validator.validate(control);
+  }
+}
+
+

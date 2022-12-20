@@ -1,0 +1,166 @@
+.fields > * {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 360px) {
+  .fields > * {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .fields > * {
+    display: block;
+    width: 100%;
+  }
+
+  #phone-update > div > mat-form-field {
+    width: 100%;
+  }
+}
+
+div.sub-btns button {
+  margin: 0.5em;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
+}
+
+div.upload-id-container {
+  text-align: center;
+}
+
+.upload-input mat-icon {
+  vertical-align: middle !important;
+}
+
+.id-attachment {
+  padding: 0.2em;
+  margin: 0.3em;
+}
+
+div.id-image {
+  height: 100px;
+  width: 150px;
+  position: relative;
+}
+
+div.id-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.id-image .close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 100;
+  cursor: pointer;
+  color: red;
+}
+
+.id-image-container {
+  height: 100px;
+  width: 60%;
+}
+
+.pdf-close {
+  color: red;
+  cursor: pointer;
+}
+
+div.id-attachment div.id-attachment :hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+#phone-update > div > mat-form-field {
+  width: 60%;
+}
+
+.pdf-holder {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5em;
+  text-align: center;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.pdf-holder p {
+  color: floralwhite !important;
+  margin: 0.2rem;
+}
+
+.pdf-holder .view-pdf {
+  visibility: hidden;
+}
+
+.pdf-holder:hover .view-pdf {
+  visibility: hidden;
+  text-decoration: none;
+}
+
+.pdf-holder:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: 300ms;
+}
+
+#id_upload,
+#kra_upload {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.custom-file-upload mat-icon {
+  vertical-align: middle;
+}
+
+.custom-color {
+  color: #02082b;
+}
+
+.submit {
+  background-color: #c77fc1;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #02082b;
+  transition: 300ms;
+}
+
+.submit:disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: white;
+}
+
+.email-change {
+  width: 70%;
+}
+
+.kra-edit mat-icon {
+  vertical-align: middle;
+}

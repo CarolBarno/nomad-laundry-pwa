@@ -5,8 +5,10 @@ import { EnforceDefaultPasswordChangeGuard } from 'src/app/guard/enforce-default
 import { GuardGuard } from 'src/app/guard/guard.guard';
 import { TwoStepAuthGuard } from 'src/app/guard/two-step-auth.guard';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
+import { VerificationComponent } from '../verification/verification.component';
 
 const routes: Routes = [
   {
@@ -15,8 +17,16 @@ const routes: Routes = [
     canActivate: [GuardGuard, EnforceDefaultPasswordChangeGuard, TwoStepAuthGuard],
     children: [
       {
+        path: 'edit-profile',
+        component: EditProfileComponent
+      },
+      {
         path: 'change-password',
         component: ChangePasswordComponent
+      },
+      {
+        path: 'verification',
+        component: VerificationComponent
       },
       // should always be the last route in this array
       {

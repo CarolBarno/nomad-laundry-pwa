@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { MainSharedModule } from 'src/app/shared-modules/main-shared.module';
 import { AdminPasswordChangeComponent } from '../admin-password-change/admin-password-change.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { EditPhoneEmailDialog, EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
+import { VerificationComponent } from '../verification/verification.component';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
@@ -12,7 +14,10 @@ import { UserRoutingModule } from './user-routing.module';
     ProfileComponent,
     ChangePasswordComponent,
     AdminPasswordChangeComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    EditProfileComponent,
+    VerificationComponent,
+    EditPhoneEmailDialog
   ],
   imports: [
     CommonModule,
@@ -21,6 +26,9 @@ import { UserRoutingModule } from './user-routing.module';
   ],
   exports: [
     MainSharedModule
+  ],
+  entryComponents: [
+    EditPhoneEmailDialog
   ]
 })
 export class UserModule { }

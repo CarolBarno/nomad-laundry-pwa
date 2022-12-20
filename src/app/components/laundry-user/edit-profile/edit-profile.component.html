@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <mat-tab-group>
+    <mat-tab label="Edit Personal Details">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-card>
+              <mat-card-header class="custom-color">Personal information</mat-card-header>
+              <mat-card-content>
+                <form class="custom-color" #nameForm="ngForm" (ngSubmit)="onSubmitName(nameForm)" novalidate>
+                  <div class="fields">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input required [(ngModel)]="user.first_name" matInput placeholder="First Name" type="text"
+                        name="=first_name">
+                      <mat-error>Required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last Name</mat-label>
+                      <input required [(ngModel)]="user.last_name" matInput placeholder="Last Name" type="text"
+                        name="=last_name">
+                      <mat-error>Required</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="sub-btns">
+                    <button class="submit" [disabled]="submitName" mat-stroked-button color="primary">
+                      <i *ngIf="submitName" class="fa fa-spinner fa-spin"></i>
+                      Change Name
+                    </button>
+                  </div>
+                </form>
+              </mat-card-content>
+            </mat-card>
+
+            <br>
+            <mat-card>
+              <mat-card-header class="custom-color">KYC ID Number
+                <strong>
+                  <a style="margin-left: 1.5em;">{{user.id_number}}</a>
+                </strong>
+                <a style="margin-left: 2.5em;" (click)="editIdNumber()" routerLink=".">Edit</a>
+              </mat-card-header>
+              <form class="custom-color" novalidate #idUploadForm="ngForm" (ngSubmit)="idUpload(idUploadForm)">
+                <div class="fields">
+                  <mat-form-field appearance="outline" *ngIf="editIdNumberVisible">
+                    <mat-label>ID/Passport Number</mat-label>
+                    <input pattern="\d+" #idNum="ngModel" [(ngModel)]="user.id_number" appUniqueIdNumber matInput
+                      placeholder="ID Number" type="text" name="id_number" minlength="5">
+                    <mat-error *ngIf="idNum.errors?.required">Required</mat-error>
+                    <mat-error *ngIf="idNum.errors?.pattern">Digits only</mat-error>
+                    <mat-error *ngIf="idNum.errors?.uniqueIdNumber">ID Number already registered</mat-error>
+                    <mat-error *ngIf="idNum.errors?.minlength">Must be more than 5 digits</mat-error>
+                  </mat-form-field>
+
+                  <div class="id-attachment">
+                    <label class="custom-file-upload" for="id_upload">
+                      <mat-icon>cloud_upload</mat-icon> Attach ID document
+                      <span class="small text-info">Only PDF and images are allowed</span>
+                    </label>
+                    <input type="file" (change)="uploadId($event.target.files)" accept="application/pdf, image/*"
+                      id="id_upload">
+                  </div>
+
+                  <div *ngIf="idImageUrl.length || isIdPdf;else updateId" class="id-image-container">
+                    <div class="id-image" *ngIf="isIdPdf==false">
+                      <span (click)="removeImage()" class="close">&times;</span>
+                      <img *ngFor="let url of imageUrls" [src]="url.uri" alt="">
+                    </div>
+
+                    <div *ngIf="isIdPdf" class="pdf-holder">
+                      <span (click)="removeIdImage()" class="close pdf-holder">&times;</span>
+                      <p>{{idFileName?idFileName:'id.pdf'}}</p>
+                    </div>
+                  </div>
+
+                  <ng-template #updateId>
+                    <div *ngIf="user?.id_upload" class="id-image-container">
+                      <div *ngIf="!checkFileFormat(user.id_upload)">
+                        <div class="id-image">
+                          <span (click)="deleteIdImageUrl()" class="close">&times;</span>
+                          <img [src]="user?.idImageUrl" alt="">
+                        </div>
+                      </div>
+
+                      <div *ngIf="checkFileFormat(user.id_upload)" class="pdf-holder">
+                        <p>{{user?.first_name}}_id.pdf</p>
+                        <a class="view-pdf" [href]="user?.idImageUrl" target="_blank">view</a>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <button class="input" style="margin-top: 0.5em;" [disabled]="upLoadId" mat-stroked-button
+                    color="prinary">
+                    <i *ngIf="upLoadId" class="fa fa-spinner fa-spin"></i>
+                    Update
+                  </button>
+                </div>
+              </form>
+            </mat-card>
+
+            <br>
+          </div>
+
+          <div class="col-md-6">
+            <mat-card>
+              <div class="phone-email-actions">
+                <h6 class="custom-color">Email Address</h6>
+                <div class="custom-color">
+                  <div *ngIf="user.email" style="display: flex; flex-direction: row;">
+                    <p class="custom-color">{{user.email}}</p>
+                    <a *ngIf="!user.isVerified" style="margin-left: 1.2em;" routerLink="/profile/verification">
+                      Verify
+                    </a>
+                  </div>
+                  <p class="custom-color">You can only change <strong>unverfied</strong> email address</p>
+                  <a mat-stroked-button (click)="openDialog('email')" routerLink=".">
+                    Change
+                  </a>
+                </div>
+              </div>
+            </mat-card>
+            <br>
+            <mat-card>
+              <div class="phone-email-actions">
+                <h6 class="custom-color">Phone Number</h6>
+                <div>
+                  <p class="custom-color">{{user.phone_number}}</p>
+                  <p class="custom-color">To change your phone number, your email must be <strong>verified</strong></p>
+                  <a *ngIf="user?.isVerified" (click)="openDialog('phone')" routerLink="." mat-stroked-button>
+                    Change
+                  </a>
+                  <a *ngIf="!user?.isVerified" routerLink="/profile/verification">Ask to vefiry your email</a>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
