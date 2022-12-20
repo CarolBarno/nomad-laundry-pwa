@@ -1,0 +1,71 @@
+.otp-container {
+  margin-top: 5em;
+}
+
+.input-field {
+  width: 20px;
+  margin: 1.5em;
+  text-align: center;
+}
+
+.submit-btn,
+.header,
+.logo-container,
+.inputs {
+  text-align: center;
+}
+
+.sub-title mat-icon {
+  vertical-align: middle;
+}
+
+.timer {
+  padding: 0.5em;
+  background-color: #02082b;
+  color: white;
+  border-radius: 5px;
+}
+
+.submit-btn > button {
+  margin: 0.2em;
+}
+
+.error {
+  border-top: 5px solid rgba(179, 111, 111, 02) !important;
+  box-shadow: 0px 10px 5px rgba(179, 111, 111, 0.2) !important;
+  transition: 300ms;
+}
+
+.success {
+  border-top: 5px solid rgba(111, 179, 128, 0.2) !important;
+  box-shadow: 0px 10px 5px rgba(111, 179, 128, 0.2) !important;
+  transition: 300ms;
+}
+
+@media screen and (max-width: 328px) {
+  .input-field {
+    width: 20px;
+    margin: 0.4em;
+    text-align: center;
+  }
+
+  .submit-btn button {
+    font-size: 13px !important;
+    padding: 0.5px !important;
+  }
+}
+
+@media screen and (min-width: 781px) {
+  .submit-btn {
+    margin-right: 6em;
+  }
+}
+
+.error-message {
+  text-align: center;
+  padding: 0;
+}
+
+.header > * {
+  color: #02082b;
+}
