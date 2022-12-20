@@ -249,7 +249,7 @@ export class EditPhoneEmailDialog {
   sendOtp() {
     this.sendingOtp = true;
     this.user.newEmail = this.userData.email;
-    this.user.action = 'UserUpdateEmail';
+    this.user.action = 'userUpdateEmail';
     this.otpService.createHashedOtp(this.user).then(
       res => {
         this.sendingOtp = true;
@@ -266,7 +266,7 @@ export class EditPhoneEmailDialog {
 
   sendPhoneOtp() {
     this.phoneOtp = true;
-    this.phoneData.action = 'UserUpdatePhone';
+    this.phoneData.action = 'userUpdatePhone';
     this.phoneData.first_name = this.user.first_name;
     this.otpService.createHashedOtp(this.phoneData).then(
       res => {
